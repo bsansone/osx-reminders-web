@@ -27,7 +27,7 @@
     "@types/lodash.isnil": "^4.0.7",
     "@types/lodash.max": "^4.0.7",
     "@types/lodash.orderby": "^4.6.7",
-    "@vitejs/plugin-vue": "^2.3.3",
+    "@vitejs/plugin-vue": "^3.1.2",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",
     "prettier": "^2.7.1",
