@@ -145,7 +145,7 @@ const setIsOpen = (value: boolean) => {
     </div>
 
     <header class="flex items-center justify-between px-4 pb-4">
-      <h1 class="truncate text-4xl font-bold">
+      <h1 class="truncate text-4xl font-bold leading-tight">
         {{ title }}
       </h1>
       <h2 class="text-4xl font-medium">

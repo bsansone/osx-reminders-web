@@ -34,15 +34,14 @@ const setIsOpen = (value: boolean) => {
 
 <template>
   <aside
-    class="flex h-full max-h-screen min-h-screen w-full min-w-[220px] max-w-[280px] resize-x flex-col bg-gray-800 py-2"
-  >
+    class="flex h-full max-h-screen min-h-screen w-full min-w-[220px] max-w-[280px] resize-x flex-col bg-gray-800 py-2">
     <div class="px-2">
       <SidebarSearch />
 
       <PinnedLists />
     </div>
 
-    <div class="overflow-scroll p-2">
+    <div class="overflow-y-auto p-2">
       <span class="block py-2 pl-2 text-xs font-bold text-gray-500">
         My Lists
       </span>
@@ -63,19 +62,12 @@ const setIsOpen = (value: boolean) => {
     </div>
 
     <div class="mt-auto pl-3 pt-1">
-      <button
-        class="cursor-auto text-sm font-medium text-gray-500 active:text-gray-400"
-        @click="openNewListModal"
-      >
+      <button class="cursor-auto text-sm font-medium text-gray-500 active:text-gray-400" @click="openNewListModal">
         <font-awesome-icon icon="fa-regular fa-square-plus" class="mr-1" />
         Add list
       </button>
     </div>
   </aside>
 
-  <NewListModal
-    :is-open="isOpen"
-    @on-submit="closeNewListModal"
-    @on-close="closeNewListModal"
-  />
+  <NewListModal :is-open="isOpen" @on-submit="closeNewListModal" @on-close="closeNewListModal" />
 </template>

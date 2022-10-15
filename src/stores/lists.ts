@@ -5,6 +5,7 @@ import { useTagsStore } from "./tags";
 import {
   DEFAULT_LISTS_STATE,
   DEFAULT_LIST_COLOR,
+  DEFAULT_LIST_SORT_BY,
   DEFAULT_PINNED_LISTS_ORDER,
 } from "../constants/constants";
 import { getNextId } from "../utils/utils";
@@ -18,12 +19,12 @@ type ListColor =
   | "purple"
   | "gray";
 
-type ListSortBy =
-  | "Manual"
-  | "Due Date"
-  | "Creation Date"
-  | "Priority"
-  | "Title";
+export type ListSortBy =
+  | "manual"
+  | "dueDate"
+  | "creationDate"
+  | "priority"
+  | "title";
 
 export interface List {
   id: number;
@@ -85,7 +86,8 @@ export const useListsStore = defineStore("lists", {
         color,
         icon,
         smartList,
-        selected: !Boolean(this.selectedList),
+        sortBy: DEFAULT_LIST_SORT_BY,
+        selected: true,
         pinned: false,
         showCompleted: false,
         hidden: false,
@@ -94,6 +96,27 @@ export const useListsStore = defineStore("lists", {
     deleteList(id: number) {
       if (this.lists[id].pinned || this.lists[id].hidden) {
         return;
+      }
+
+      const LAST_PINNED_LIST_ID = 4;
+      const ALL_LIST_ID = 1;
+
+      let prevId = id;
+
+      while (prevId > LAST_PINNED_LIST_ID) {
+        prevId--;
+
+        if (this.lists[prevId]) {
+          break;
+        }
+      }
+
+      if (prevId === LAST_PINNED_LIST_ID) {
+        prevId = ALL_LIST_ID;
+      }
+
+      if (prevId) {
+        this.selectList(prevId);
       }
 
       delete this.lists[id];
@@ -141,6 +164,9 @@ export const useListsStore = defineStore("lists", {
     },
     toggleShowListCompleted(id: number) {
       this.lists[id].showCompleted = !this.lists[id].showCompleted;
+    },
+    setListSortBy(id: number, sortBy: ListSortBy) {
+      this.lists[id].sortBy = sortBy;
     },
   },
 });

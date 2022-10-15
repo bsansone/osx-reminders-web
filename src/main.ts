@@ -16,6 +16,7 @@ import {
   faCheck,
   faLocationArrow,
   faXmark,
+  faChevronRight
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faPlusSquare as farPlusSquare,
@@ -45,7 +46,8 @@ library.add(
   faCheck,
   faLocationArrow,
   faClock,
-  faXmark
+  faXmark,
+  faChevronRight
 );
 
 const pinia = createPinia();

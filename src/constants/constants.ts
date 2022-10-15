@@ -64,6 +64,7 @@ export const DEFAULT_LISTS_STATE = {
 export const DEFAULT_PINNED_LISTS_ORDER = [1, 2, 3, 0];
 
 export const DEFAULT_LIST_COLOR = "blue";
+export const DEFAULT_LIST_SORT_BY = "manual";
 
 export const DEFAULT_TAGS_STATE = {
   "0": {
